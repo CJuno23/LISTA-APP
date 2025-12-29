@@ -1,9 +1,15 @@
 const input = document.querySelector(".list-of-item");
 const addButton = document.querySelector(".add-button");
 const listContainer = document.querySelector(".list-container");
+const buttons = document.querySelector(".buttons");
+const confirmButton = document.querySelector(".confirm");
+const clearAllButton = document.querySelector(".clear-all");
+const storedInput = localStorage.getItem("textinput")
+
 
 
 addButton.addEventListener("click", () => {
+    buttons.classList.add("buttons-visible");
     const inputValue = input.value.trim();
    
     if (inputValue === "") {
@@ -15,10 +21,11 @@ addButton.addEventListener("click", () => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     const itemContainer = document.createElement("div");
-    itemContainer.style.display = "flex"
+    itemContainer.classList.add("item-container");
+    /*itemContainer.style.display = "flex"
     itemContainer.style.justifyContent = "space-between"
     itemContainer.style.alignItems = "center"
-    itemContainer.style.padding = "0 5px" 
+    itemContainer.style.padding = "0 5px" */
 
     groceryItem.textContent = inputValue;
     deleteButton.textContent = "Delete";
@@ -33,7 +40,25 @@ addButton.addEventListener("click", () => {
         const removeGrocery = itemContainer;
         removeGrocery.remove();
     }) 
+
+    checkbox.addEventListener("change", () => {
+        const checking = checkbox.checked;
+        if (checking) {
+           groceryItem.classList.add("linethrough");
+        }else {
+           groceryItem.classList.remove("linethrough")
+        }
+    });
+    const saveToLocalStorage = () => {
+    localStorage.setItem("textinput", groceryItem.textContent);
+    }
+    confirmButton.addEventListener("click", saveToLocalStorage)
+    
 });
+
+
+
+//way of getting checkbox
 /*const inputCheckbox = document.querySelector(".checking-box")
 
 inputCheckbox.addEventListener("click", () => {
