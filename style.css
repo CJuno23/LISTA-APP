@@ -13,7 +13,8 @@ body {
     background-color: rgb(255, 251, 251);
     border-radius: 7px;
     border: 1px solid rgb(211, 208, 208);
-    height: auto;
+    height: 378px;
+    overflow-y: auto;
 }
 .listing {
     padding: 7px;
@@ -50,6 +51,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     border-bottom: 1px solid rgb(204, 204, 204);
     margin-bottom: 5px;
     padding-bottom: 5px;
@@ -62,4 +64,24 @@ h2 {
 }
 .buttons-visible {
     visibility: visible;
+}
+.buttons-disabled {
+    cursor: not-allowed;
+}
+.popup-message {
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(238, 234, 234);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    display: none;
+    border-radius: 7px;
+}
+.popup-message p {
+    margin: 2rem 0;
+}
+.display-block {
+    display: block;
 }

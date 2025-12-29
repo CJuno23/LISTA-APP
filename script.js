@@ -4,8 +4,7 @@ const listContainer = document.querySelector(".list-container");
 const buttons = document.querySelector(".buttons");
 const confirmButton = document.querySelector(".confirm");
 const clearAllButton = document.querySelector(".clear-all");
-const storedInput = localStorage.getItem("textinput")
-
+const mainContainer = document.querySelector(".main-container")
 
 
 addButton.addEventListener("click", () => {
@@ -35,13 +34,14 @@ addButton.addEventListener("click", () => {
 
     listContainer.append(itemContainer);
     input.value = "";
+    
 
     deleteButton.addEventListener("click", () => {
         const removeGrocery = itemContainer;
         removeGrocery.remove();
     }) 
 
-    checkbox.addEventListener("change", () => {
+    checkbox.addEventListener("click", () => {
         const checking = checkbox.checked;
         if (checking) {
            groceryItem.classList.add("linethrough");
@@ -49,14 +49,34 @@ addButton.addEventListener("click", () => {
            groceryItem.classList.remove("linethrough")
         }
     });
-    const saveToLocalStorage = () => {
-    localStorage.setItem("textinput", groceryItem.textContent);
-    }
-    confirmButton.addEventListener("click", saveToLocalStorage)
-    
+    input.focus();
 });
 
+clearAllButton.addEventListener("click", () => {
+    const clearAllGroceryList = listContainer;
+    clearAllGroceryList.remove();
+})
+confirmButton.addEventListener("click", () => {
+    const disableAddButton = addButton;
+    const popupMessage = document.querySelector(".popup-message");
+    const closeButton = document.querySelector(".close")
+    mainContainer.style.display = "none";
 
+    closeButton.addEventListener("click", () => {
+        const closeMessage = popupMessage;
+        closeMessage.style.display = "none";
+        mainContainer.style.display = "block";
+        confirmButton.disabled = true;
+        confirmButton.style.backgroundColor = "gray";
+        clearAllButton.disabled = true;
+        clearAllButton.style.backgroundColor = "gray";
+    })
+
+    popupMessage.classList.add("display-block")
+    addButton.style.backgroundColor = "gray"
+    disableAddButton.disabled = true;
+    disableAddButton.classList.add("buttons-disabled");
+})
 
 //way of getting checkbox
 /*const inputCheckbox = document.querySelector(".checking-box")
