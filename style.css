@@ -19,9 +19,11 @@ body {
 .listing {
     padding: 7px;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
 }
 .listing input { 
-    padding: 7px;
+    width: 89%;
 }
 button {
     background-color: rgb(3, 143, 3);

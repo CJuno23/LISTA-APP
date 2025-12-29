@@ -70,7 +70,7 @@ confirmButton.addEventListener("click", () => {
         confirmButton.style.backgroundColor = "gray";
         clearAllButton.disabled = true;
         clearAllButton.style.backgroundColor = "gray";
-    })
+    });
 
     popupMessage.classList.add("display-block")
     addButton.style.backgroundColor = "gray"
